@@ -1,0 +1,28 @@
+{
+  "name": "ticktick-mcp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc && chmod 755 build/index.js",
+    "watch": "tsc --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.7.0",
+    "axios": "^1.8.4",
+    "moment-timezone": "^0.5.47",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "typescript": "^5.8.2"
+  },
+  "type": "module",
+  "bin": {
+    "ticktick-mcp": "./build/index.js"
+  }
+}
