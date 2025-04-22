@@ -24,13 +24,13 @@ export const taskObject2Task = (object: Record<string, unknown>): Task => {
 
 export const task2DisplayObject = (
   task: Task,
-  id2ProjectName: Map<string, string>
+  id2ProjectName: Record<string, string>
 ) => {
   return {
     id: task.id,
     title: task.title,
     content: task.content,
-    projectName: id2ProjectName.get(task.projectId) || "Inbox",
+    projectName: id2ProjectName[task.projectId] || "Inbox",
     priority: (() => {
       switch (task.priority) {
         case 5:

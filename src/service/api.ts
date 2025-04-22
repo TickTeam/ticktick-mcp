@@ -5,6 +5,7 @@ export async function addTask(data: {
   title: string;
   description: string;
   priority?: string;
+  dueString?: string;
 }) {
   return await openApiV1.post("/task", data);
 }

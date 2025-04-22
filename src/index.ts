@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
@@ -8,11 +10,11 @@ import { fetchProjects } from "./service/project.js";
 // Create server instance
 const server = new McpServer({
   name: "ticktick",
-  version: "1.0.2",
+  version: "1.0.0",
 });
 
 server.tool(
-  "get-todo-tasks",
+  "get_todo_tasks",
   "Retrieve the today's to-do tasks from the TickTick." +
     "The task should be presented in a table format by default, displaying the title and project name, unless otherwise specified.",
   {},
@@ -23,10 +25,14 @@ server.tool(
         fetchTodayUndoneTasks(),
         fetchProjects(),
       ]);
-      const id2ProjectName = new Map(
-        projects.map((project) => [project.id, project.name])
+      const id2ProjectName = projects.reduce(
+        (res: Record<string, string>, project) => {
+          res[project.id] = project.name;
+          return res;
+        },
+        {}
       );
-      console.log(id2ProjectName);
+
       return {
         content: [
           {
@@ -53,7 +59,7 @@ server.tool(
 );
 
 server.tool(
-  "add-task",
+  "add_task",
   "Add task to TickTick inbox",
   {
     title: z.string().nonempty(),
@@ -68,7 +74,8 @@ server.tool(
     let error = null;
     try {
       const result = await addTask({
-        title: title + " " + (date || ""),
+        title: title,
+        dueString: date,
         description: content || "",
         priority: (() => {
           switch (priority) {

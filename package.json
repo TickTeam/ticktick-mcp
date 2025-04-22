@@ -1,16 +1,25 @@
 {
-  "name": "ticktick-mcp",
-  "version": "1.0.0",
+  "name": "@ticktick/mcp-server",
+  "version": "0.0.8",
   "description": "",
-  "main": "index.js",
+  "main": "build/index.js",
+  "bin": {
+    "ticktick-mcp-server": "build/index.js"
+  },
+  "files": [
+    "build"
+  ],
   "scripts": {
     "prepare": "npm run build",
-    "build": "tsc && chmod 755 build/index.js",
+    "build": "rm -rf build && tsc && chmod 755 build/index.js",
     "watch": "tsc --watch"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "ticktick",
+    "mcp"
+  ],
+  "author": "Appest",
+  "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.7.0",
     "axios": "^1.8.4",
@@ -21,8 +30,5 @@
     "@types/node": "^22.13.10",
     "typescript": "^5.8.2"
   },
-  "type": "module",
-  "bin": {
-    "ticktick-mcp": "./build/index.js"
-  }
+  "type": "module"
 }
