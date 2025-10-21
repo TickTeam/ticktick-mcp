@@ -1,6 +1,6 @@
 {
   "name": "@ticktick/mcp-server",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "",
   "main": "build/index.js",
   "bin": {
@@ -22,7 +22,7 @@
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.7.0",
-    "axios": "^1.11.0",
+    "axios": "^1.12.0",
     "moment-timezone": "^0.5.47",
     "zod": "^3.24.2"
   },
